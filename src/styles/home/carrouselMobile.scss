@@ -1,0 +1,42 @@
+.react-multi-carousel-list {
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+
+  .react-multi-carousel-item {
+    background-color: transparent;
+    width: 245px;
+    height: 342px;
+    perspective: 1000px;
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    &:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .front,
+    .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .back {
+      width: 245px;
+      height: 342px;
+      background: url("../images/card-back.png") no-repeat center/contain;
+      color: white;
+      transform: rotateY(180deg);
+    }
+  }
+}

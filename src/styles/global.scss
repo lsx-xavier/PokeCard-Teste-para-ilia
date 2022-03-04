@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
+
+.showDesktop {
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+  }
+}
+
+main {
+  padding: 120px 0 20px;
+}
