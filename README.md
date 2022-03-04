@@ -20,7 +20,7 @@ $ yarn
 
 $ yarn dev
 
-# O projeto inciará na porta:3000 - acesse <http://localhost:3000>
+# O projeto iniciará na porta:3000 - acesse <http://localhost:3000>
 
 ### Features
 
