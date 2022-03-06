@@ -18,6 +18,7 @@ const responsive = {
 
 interface PorpsInterface {
   list: PokemonListInterface[];
+  observer: Element;
 }
 
 interface PokemonListInterface {
@@ -27,9 +28,10 @@ interface PokemonListInterface {
   types: [string];
 }
 
-export default function CarrouselMobile({ list }: PorpsInterface) {
+export default function CarrouselMobile({ list, observer }: PorpsInterface) {
   return (
     <Carousel responsive={responsive}>
+      {console.log("teste")}
       {list?.map((item) => (
         <Link className="card" key={item.id} to={`/pokemon-details/${item.id}`}>
           <div className="card-inner">
@@ -46,17 +48,24 @@ export default function CarrouselMobile({ list }: PorpsInterface) {
               />
             </div>
             <div className="back">
-              {item.name} - {item.id}
-              <ul>
-                <legend>Tipo</legend>
-                {item.types?.map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ul>
+              <section>
+                <h2>
+                  {item.name} - {item.id}
+                </h2>
+                <ul>
+                  <legend>Tipo(s):</legend>
+                  {item.types?.length ? (
+                    item.types?.map((x) => <li key={x}>{x}</li>)
+                  ) : (
+                    <li>Nenhum informado</li>
+                  )}
+                </ul>
+              </section>
             </div>
           </div>
         </Link>
       ))}
+      <div className="showMobile" ref={observer}></div>
     </Carousel>
   );
 }
