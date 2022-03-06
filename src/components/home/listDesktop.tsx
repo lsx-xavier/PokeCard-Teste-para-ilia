@@ -5,7 +5,6 @@ import "../../styles/home/listDesktop.scss";
 
 interface PorpsInterface {
   list: PokemonListInterface[];
-  observer: Element;
 }
 
 interface PokemonListInterface {
@@ -15,7 +14,7 @@ interface PokemonListInterface {
   types: [string];
 }
 
-export default function listDesktop({ list, observer }: PorpsInterface) {
+export default function listDesktop({ list }: PorpsInterface) {
   return (
     <div className="gridPokemons showDesktop">
       {list?.map((item: PokemonListInterface) => (
