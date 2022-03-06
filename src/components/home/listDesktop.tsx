@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import "../../styles/home/listDesktop.scss";
 
 interface PorpsInterface {
   list: PokemonListInterface[];
+  observer: Element;
 }
 
 interface PokemonListInterface {
@@ -14,7 +15,7 @@ interface PokemonListInterface {
   types: [string];
 }
 
-export default function listDesktop({ list }: PorpsInterface) {
+export default function listDesktop({ list, observer }: PorpsInterface) {
   return (
     <div className="gridPokemons showDesktop">
       {list?.map((item: PokemonListInterface) => (
@@ -50,6 +51,7 @@ export default function listDesktop({ list }: PorpsInterface) {
           </div>
         </Link>
       ))}
+      <div className="showDesktop" ref={observer}></div>
     </div>
   );
 }
