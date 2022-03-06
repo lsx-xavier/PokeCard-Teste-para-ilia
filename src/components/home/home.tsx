@@ -8,8 +8,8 @@ import CarrouselMobile from "./carrouselMobile";
 import { setPageNumber } from "../shared/store/stock.reducer";
 
 export default function Home() {
-  const observer = useRef(null);
   const dispatch = useAppDispatch();
+  const observer = useRef(null);
 
   const listPokemons = useAppSelector((state) => state.dataPokemon.data);
   const counItems = useAppSelector((state) => state.dataPokemon.counItems);
@@ -35,14 +35,18 @@ export default function Home() {
     <>
       <Header />
       <main className="home">
-        {listPokemons.length ? <CarrouselMobile list={listPokemons} /> : <></>}
-        {listPokemons.length ? <ListDesktop list={listPokemons} /> : <></>}
-
-        {loading ? (
-          <Loading />
+        {listPokemons.length ? (
+          <CarrouselMobile list={listPokemons} observer={observer} />
         ) : (
-          <div className="showDesktop" ref={observer}></div>
+          <></>
         )}
+        {listPokemons.length ? (
+          <ListDesktop list={listPokemons} observer={observer} />
+        ) : (
+          <></>
+        )}
+
+        {loading ? <Loading /> : <></>}
       </main>
     </>
   );
