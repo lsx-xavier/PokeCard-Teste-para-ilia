@@ -17,7 +17,7 @@ export default function Home() {
   const loading = useAppSelector((state) => state.dataPokemon.loading);
 
   useEffect(() => {
-    if (loading) return;
+    if (loading && observer) return;
 
     if (listPokemons.length <= counItems) {
       const intersectionObserver = new IntersectionObserver((entries) => {
@@ -29,24 +29,20 @@ export default function Home() {
       intersectionObserver.observe(observer.current);
       return () => intersectionObserver.disconnect();
     }
-  }, [loading, listPokemons, counItems]);
+  }, [loading, listPokemons, counItems, observer]);
 
   return (
     <>
       <Header />
       <main className="home">
-        {listPokemons.length ? (
-          <CarrouselMobile list={listPokemons} observer={observer} />
-        ) : (
-          <></>
-        )}
-        {listPokemons.length ? (
-          <ListDesktop list={listPokemons} observer={observer} />
-        ) : (
-          <></>
-        )}
+        {listPokemons.length ? <CarrouselMobile list={listPokemons} /> : <></>}
+        {listPokemons.length ? <ListDesktop list={listPokemons} /> : <></>}
 
-        {loading ? <Loading /> : <></>}
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="showDesktop" ref={observer}></div>
+        )}
       </main>
     </>
   );
