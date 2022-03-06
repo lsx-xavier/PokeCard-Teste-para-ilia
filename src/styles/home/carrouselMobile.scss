@@ -4,39 +4,69 @@
   }
 
   .react-multi-carousel-item {
-    background-color: transparent;
     width: 245px;
-    height: 342px;
-    perspective: 1000px;
+
+    .card {
+      text-decoration: none;
+    }
 
     .card-inner {
       position: relative;
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-
-    &:hover .card-inner {
-      transform: rotateY(180deg);
     }
 
     .front,
     .back {
-      position: absolute;
+      position: relative;
       width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
+      height: 342px;
     }
 
     .back {
-      width: 245px;
-      height: 342px;
-      background: url("../images/card-back.png") no-repeat center/contain;
+      background: url("../../images/card-back.png") no-repeat center/contain;
       color: white;
-      transform: rotateY(180deg);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+
+      &:before {
+        position: absolute;
+        height: 342px;
+        width: 245px;
+        content: "";
+        display: block;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        margin: 0 auto;
+      }
+
+      section {
+        color: #fff;
+        position: relative;
+        z-index: 2;
+
+        h2 {
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        ul {
+          margin-top: 10px;
+          list-style: none;
+          legend {
+            font-size: 16px;
+            margin-bottom: 5px;
+          }
+
+          li {
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }
